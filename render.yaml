@@ -2,7 +2,7 @@ services:
   - type: web
     runtime: docker
     name: securegalleryvault-shared-yogesh-2026
-    plan: starter
+    plan: free
     region: oregon
     dockerfilePath: ./SecureGalleryVault.SharedServer/Dockerfile
     dockerContext: .
@@ -11,12 +11,8 @@ services:
       - key: ASPNETCORE_URLS
         value: http://0.0.0.0:10000
       - key: SGV_DATA_DIR
-        value: /var/data/sgv-shared
+        value: /tmp/sgv-shared
       - key: SGV_BOOTSTRAP_CODE
         value: 78421592
       - key: SGV_MASTER_SECRET
         generateValue: true
-    disk:
-      name: sgv-shared-data
-      mountPath: /var/data
-      sizeGB: 1
